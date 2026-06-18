@@ -1,0 +1,1494 @@
+/*
+=== CATHCART UNITED FREE CHURCH — STYLESHEET v2 ===
+
+PALETTE (warm espresso + terracotta)
+--col-espresso-dark:   #2C1810   Header, footer backgrounds
+--col-espresso:        #3D2218   Nav background
+--col-espresso-mid:    #6B3A28   Secondary surfaces, accents
+--col-terracotta:      #D4956A   Primary accent — links, highlights, borders
+--col-sand:            #C4A882   Muted text on dark backgrounds
+--col-cream:           #F5E6D8   Light backgrounds, strips
+--col-page:            #FFFBF8   Page background
+--col-white:           #FFFFFF   Card backgrounds
+
+TYPOGRAPHY
+--font-display:  'Playfair Display', Georgia, serif   — headings, hero
+--font-body:     'Nunito', Arial, sans-serif           — all body text
+
+CONTENTS
+ 1. CSS CUSTOM PROPERTIES (tokens)
+ 2. RESET & BASE
+ 3. LAYOUT
+ 4. HEADER
+ 5. NAVIGATION
+ 5a. DROPDOWN
+ 6. HERO
+ 7. INFO STRIP
+ 8. SECTION DIVIDER
+ 9. CIRCULAR STAMP
+10. MAIN CONTENT
+11. NOTICE CARD
+12. SECTION HEADING
+13. EVENT CARDS
+14. NEWS ITEMS
+15. FEATURE PANELS
+16. SCRIPTURE CARD
+17. DENOMINATION STRIP
+18. COMING UP
+19. SECTION CARDS
+20. PHOTO / IMAGE
+21. FORMS
+22. VIDEO
+23. SERMONS
+24. MAP
+25. SOCIAL LINKS
+26. EVENTS PAGE
+27. WATCH PAGE
+28. FOOTER
+29. RESPONSIVE (max 700px)
+*/
+
+
+/* ===================================================
+   1. CSS CUSTOM PROPERTIES
+   Think of this as the paint chart for the whole site.
+   Change a value here and it ripples everywhere.
+   =================================================== */
+
+:root {
+    /* Colour palette */
+    --col-espresso-dark:  #2C1810;
+    --col-espresso:       #3D2218;
+    --col-espresso-mid:   #6B3A28;
+    --col-terracotta:     #D4956A;
+    --col-sand:           #C4A882;
+    --col-cream:          #F5E6D8;
+    --col-cream-mid:      #E8D4C0;
+    --col-page:           #FFFBF8;
+    --col-white:          #FFFFFF;
+    --col-text:           #2C1810;
+    --col-text-mid:       #6B3A28;
+    --col-text-muted:     #8B6E5A;
+    --col-border:         #D4B896;
+
+    /* Typography */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body:    'Nunito', Arial, sans-serif;
+
+    /* Spacing scale */
+    --space-xs:   4px;
+    --space-sm:   8px;
+    --space-md:   16px;
+    --space-lg:   24px;
+    --space-xl:   40px;
+    --space-2xl:  64px;
+
+    /* Radii */
+    --radius-sm:  4px;
+    --radius-md:  8px;
+    --radius-lg:  12px;
+}
+
+
+/* ===================================================
+   2. RESET & BASE
+   =================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--col-text);
+    background-color: var(--col-page);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--col-espresso-mid);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--col-terracotta);
+    text-decoration: underline;
+}
+
+/* Visible focus ring for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--col-terracotta);
+    outline-offset: 3px;
+}
+
+
+/* ===================================================
+   3. LAYOUT
+   =================================================== */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* ===================================================
+   4. HEADER
+   =================================================== */
+
+header {
+    background-color: var(--col-espresso-dark);
+    padding: 16px 0;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.header-logo-link {
+    flex-shrink: 0;
+    display: block;
+}
+
+.logo {
+    height: 72px;
+    width: auto;
+}
+
+/* Tagline beside the logo — hidden on mobile */
+.header-tagline {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.tagline-primary {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--col-cream);
+    font-size: 1.05em;
+    line-height: 1.3;
+}
+
+.tagline-secondary {
+    font-family: var(--font-body);
+    color: var(--col-sand);
+    font-size: 0.8em;
+    letter-spacing: 0.02em;
+}
+
+
+/* ===================================================
+   5. NAVIGATION
+   =================================================== */
+
+nav {
+    background-color: var(--col-espresso);
+    position: relative;
+    z-index: 100;
+}
+
+nav .container {
+    display: flex;
+    align-items: stretch;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+nav > .container > ul > li {
+    position: relative;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--col-sand);
+    padding: 12px 16px;
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+nav ul li a:hover {
+    color: var(--col-cream);
+    border-bottom-color: var(--col-terracotta);
+    text-decoration: none;
+}
+
+nav ul li a.active {
+    color: var(--col-cream);
+    border-bottom-color: var(--col-terracotta);
+}
+
+.nav-arrow {
+    font-size: 0.7em;
+    opacity: 0.6;
+}
+
+
+/* ===================================================
+   5a. DROPDOWN
+   =================================================== */
+
+nav ul li ul.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--col-espresso-dark);
+    border-top: 2px solid var(--col-terracotta);
+    min-width: 190px;
+    box-shadow: 0 6px 16px rgba(44, 24, 16, 0.25);
+    flex-direction: column;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+nav ul li:hover ul.dropdown,
+nav ul li:focus-within ul.dropdown {
+    display: flex;
+}
+
+nav ul li ul.dropdown li a {
+    padding: 10px 20px;
+    font-size: 0.8em;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    font-weight: 600;
+}
+
+nav ul li ul.dropdown li a:hover {
+    background-color: var(--col-espresso);
+    border-left-color: var(--col-terracotta);
+    border-bottom: none;
+    color: var(--col-cream);
+}
+
+nav ul li ul.dropdown li a.active {
+    border-left-color: var(--col-terracotta);
+    color: var(--col-cream);
+    border-bottom: none;
+}
+
+
+/* ===================================================
+   6. HERO
+   =================================================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--col-espresso-dark);
+    min-height: 340px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.55;
+}
+
+/* Gradient ensures text is always readable over any photo */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 20%,
+        rgba(44, 24, 16, 0.5) 60%,
+        rgba(44, 24, 16, 0.92) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    padding: var(--space-2xl) 0 var(--space-xl);
+    width: 100%;
+}
+
+.hero-content .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* Triangle tagline: line 1 full width, lines 2+3 indented to create pyramid */
+.hero-tagline {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hero-tagline-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--col-cream);
+    line-height: 1.25;
+    text-shadow: 0 1px 4px rgba(44, 24, 16, 0.6);
+}
+
+.hero-tagline-line:nth-child(1) {
+    font-size: 2em;
+    margin-left: 0;
+}
+
+.hero-tagline-line:nth-child(2) {
+    font-size: 1.45em;
+    margin-left: 2em;
+}
+
+.hero-tagline-line:nth-child(3) {
+    font-size: 1.45em;
+    margin-left: 4em;
+}
+
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background-color: var(--col-terracotta);
+    color: var(--col-espresso-dark);
+    font-weight: 700;
+    font-size: 0.9em;
+    letter-spacing: 0.04em;
+    padding: 10px 22px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background-color 0.15s;
+    align-self: flex-start;
+}
+
+.hero-cta:hover {
+    background-color: var(--col-sand);
+    text-decoration: none;
+    color: var(--col-espresso-dark);
+}
+
+
+/* ===================================================
+   7. INFO STRIP
+   Four quick facts immediately below the hero.
+   Answers every first-visit question in 3 seconds.
+   =================================================== */
+
+.info-strip {
+    background-color: var(--col-cream);
+    border-bottom: 1px solid var(--col-border);
+}
+
+.info-strip-inner {
+    display: flex;
+}
+
+.info-strip-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 14px 8px;
+    text-align: center;
+    border-right: 1px solid var(--col-border);
+}
+
+.info-strip-item:last-child {
+    border-right: none;
+}
+
+.info-strip-icon {
+    font-size: 1.4em;
+    line-height: 1;
+}
+
+.info-strip-label {
+    font-size: 0.65em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--col-espresso-dark);
+}
+
+.info-strip-value {
+    font-size: 0.8em;
+    color: var(--col-espresso-mid);
+    font-weight: 600;
+}
+
+
+/* ===================================================
+   8. SECTION DIVIDER
+   A decorative divider using the stamp SVG.
+   Used between major page sections.
+   =================================================== */
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0 var(--space-lg);
+}
+
+.section-divider-line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--col-border);
+}
+
+.section-divider-stamp {
+    width: 36px;
+    height: 36px;
+    opacity: 0.35;
+    flex-shrink: 0;
+}
+
+
+/* ===================================================
+   9. CIRCULAR STAMP (inline use)
+   Small "Grow · Serve · Share" device used as
+   a repeating brand mark throughout the site.
+   =================================================== */
+
+.stamp-inline {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    opacity: 0.18;
+    float: right;
+    margin: 0 0 var(--space-md) var(--space-md);
+}
+
+.stamp-watermark {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    opacity: 0.04;
+    bottom: 16px;
+    right: 16px;
+    pointer-events: none;
+}
+
+
+/* ===================================================
+   10. MAIN CONTENT
+   =================================================== */
+
+main {
+    padding: var(--space-xl) 0;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--col-espresso-dark);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: var(--space-md);
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.55em; }
+h3 { font-size: 1.2em; margin-top: var(--space-lg); }
+
+h4 {
+    font-family: var(--font-body);
+    font-size: 0.9em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--col-terracotta);
+    margin: var(--space-lg) 0 var(--space-sm);
+}
+
+p { margin-bottom: var(--space-md); }
+
+ul, ol {
+    margin: 0 0 var(--space-md) var(--space-lg);
+}
+
+ul li, ol li {
+    margin-bottom: var(--space-xs);
+}
+
+.section-link {
+    color: var(--col-terracotta);
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.section-link:hover {
+    color: var(--col-espresso-mid);
+    text-decoration: underline;
+}
+
+
+/* ===================================================
+   11. NOTICE CARD
+   Dark band for important announcements.
+   =================================================== */
+
+.notice-card {
+    background-color: var(--col-espresso-mid);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.notice-card-icon {
+    font-size: 1.8em;
+    flex-shrink: 0;
+}
+
+.notice-card-body {
+    flex: 1;
+}
+
+.notice-card h3 {
+    color: var(--col-cream);
+    margin: 0 0 4px;
+    font-size: 1.05em;
+}
+
+.notice-card p {
+    color: var(--col-sand);
+    font-size: 0.9em;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.notice-card .section-link {
+    color: var(--col-terracotta);
+}
+
+.notice-card .stamp-watermark {
+    opacity: 0.06;
+}
+
+
+/* ===================================================
+   12. SECTION HEADING
+   Icon + title + decorative line
+   =================================================== */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.section-heading-icon {
+    font-size: 1.1em;
+    flex-shrink: 0;
+}
+
+.section-heading h2 {
+    font-size: 1.3em;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.section-heading-rule {
+    flex: 1;
+    height: 1px;
+    background-color: var(--col-border);
+}
+
+
+/* ===================================================
+   13. EVENT CARDS (Coming Up)
+   =================================================== */
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.event-card {
+    background: var(--col-white);
+    border: 1px solid var(--col-border);
+    border-top: 3px solid var(--col-terracotta);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+}
+
+.event-card-date {
+    font-size: 0.72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--col-terracotta);
+    margin-bottom: var(--space-sm);
+}
+
+.event-card h3 {
+    font-size: 1em;
+    margin: 0 0 var(--space-sm);
+    color: var(--col-espresso-dark);
+    font-family: var(--font-body);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.event-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.82em;
+    color: var(--col-espresso-mid);
+}
+
+.event-card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.more-events-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--col-terracotta);
+    margin-top: calc(-1 * var(--space-md));
+    margin-bottom: var(--space-xl);
+}
+
+
+/* ===================================================
+   14. NEWS ITEMS
+   =================================================== */
+
+.news-list {
+    margin-bottom: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.news-item {
+    background: var(--col-white);
+    border: 1px solid var(--col-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+}
+
+.news-item-thumb {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
+    background-color: var(--col-cream);
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.news-item-thumb-placeholder {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
+    background-color: var(--col-cream);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.news-item-body h3 {
+    font-family: var(--font-body);
+    font-size: 0.95em;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--col-espresso-dark);
+}
+
+.news-item-body p {
+    font-size: 0.85em;
+    color: var(--col-text-mid);
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* ===================================================
+   15. FEATURE PANELS
+   Three-column panels: Prayer, Serve, Contact
+   =================================================== */
+
+.feature-panels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.feature-panel {
+    background: var(--col-white);
+    border: 1px solid var(--col-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.feature-panel-icon {
+    font-size: 2em;
+    line-height: 1;
+}
+
+.feature-panel h3 {
+    font-family: var(--font-body);
+    font-size: 0.82em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--col-espresso-dark);
+    margin: 0;
+}
+
+.feature-panel p {
+    font-size: 0.85em;
+    color: var(--col-text-mid);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.feature-panel .section-link {
+    margin-top: auto;
+}
+
+
+/* ===================================================
+   16. SCRIPTURE CARD
+   =================================================== */
+
+.scripture-card {
+    background-color: var(--col-espresso-dark);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-2xl);
+    margin: var(--space-xl) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.scripture-card p {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--col-cream);
+    font-size: 1.2em;
+    line-height: 1.7;
+    margin: 0 0 var(--space-sm);
+}
+
+.scripture-ref {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.8em !important;
+    font-weight: 700;
+    color: var(--col-terracotta) !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+
+/* ===================================================
+   17. DENOMINATION STRIP
+   =================================================== */
+
+.denomination-strip {
+    background-color: var(--col-cream);
+    border: 1px solid var(--col-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-xl);
+    margin: var(--space-xl) 0;
+    font-size: 0.9em;
+    color: var(--col-text-mid);
+}
+
+.denomination-strip p {
+    margin-bottom: var(--space-sm);
+}
+
+.denomination-strip p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ===================================================
+   18. COMING UP (events page version)
+   =================================================== */
+
+.coming-up-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.coming-up-card {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+    background: var(--col-white);
+    border: 1px solid var(--col-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+}
+
+.coming-up-date-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--col-espresso-dark);
+    color: var(--col-cream);
+    border-radius: var(--radius-sm);
+    min-width: 52px;
+    padding: var(--space-sm);
+    flex-shrink: 0;
+}
+
+.coming-up-date-block strong {
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+.coming-up-date-block span {
+    font-size: 0.65em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--col-sand);
+}
+
+.coming-up-info h4 {
+    font-family: var(--font-body);
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--col-espresso-dark);
+    margin: 0 0 var(--space-xs);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.coming-up-meta {
+    font-size: 0.82em;
+    color: var(--col-text-mid);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px var(--space-md);
+}
+
+.coming-up-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+
+/* ===================================================
+   19. SECTION CARDS (generic content cards)
+   =================================================== */
+
+.section-card {
+    background: var(--col-white);
+    border: 1px solid var(--col-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+}
+
+.section-card-header {
+    background-color: var(--col-cream);
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--col-border);
+}
+
+.section-card-header h3 {
+    margin: 0;
+    font-size: 1.05em;
+}
+
+.section-card-body {
+    padding: var(--space-lg);
+}
+
+
+/* ===================================================
+   20. PHOTO / IMAGE HELPERS
+   =================================================== */
+
+.photo-row {
+    display: flex;
+    gap: var(--space-md);
+    margin: var(--space-md) 0;
+}
+
+.photo-placeholder {
+    flex: 1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--col-cream);
+}
+
+.content-image-small  { max-width: 120px; border-radius: var(--radius-sm); }
+.content-image-medium { max-width: 280px; border-radius: var(--radius-sm); }
+.content-image-large  { max-width: 480px; border-radius: var(--radius-sm); }
+.content-image-full   { width: 100%;      border-radius: var(--radius-sm); }
+
+.card-content-with-image {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+}
+
+.card-image { flex-shrink: 0; }
+
+
+/* ===================================================
+   21. FORMS
+   =================================================== */
+
+.prayer-form,
+.contact-form {
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9em;
+    margin-bottom: var(--space-xs);
+    color: var(--col-espresso-dark);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--col-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.95em;
+    background: var(--col-white);
+    color: var(--col-text);
+    transition: border-color 0.15s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--col-terracotta);
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    font-size: 0.9em;
+}
+
+.form-check input[type="checkbox"] {
+    margin-top: 4px;
+    flex-shrink: 0;
+    width: auto;
+}
+
+.required {
+    color: var(--col-terracotta);
+    margin-left: 2px;
+}
+
+.btn-submit {
+    background-color: var(--col-espresso-dark);
+    color: var(--col-cream);
+    border: none;
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.95em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.btn-submit:hover {
+    background-color: var(--col-espresso-mid);
+}
+
+
+/* ===================================================
+   22. VIDEO
+   =================================================== */
+
+.video-container {
+    margin: var(--space-lg) 0;
+}
+
+.video-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.video-embed iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    loading: lazy;
+}
+
+
+/* ===================================================
+   23. SERMONS
+   =================================================== */
+
+.sermon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.sermon-card {
+    background: var(--col-white);
+    border: 1px solid var(--col-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.sermon-date {
+    font-size: 0.72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--col-terracotta);
+}
+
+.sermon-title {
+    font-family: var(--font-display);
+    font-size: 1em;
+    color: var(--col-espresso-dark);
+    line-height: 1.3;
+}
+
+.sermon-passage,
+.sermon-preacher,
+.sermon-duration {
+    font-size: 0.82em;
+    color: var(--col-text-mid);
+}
+
+
+/* ===================================================
+   24. MAP
+   =================================================== */
+
+.map-container {
+    margin: var(--space-lg) 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--col-border);
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 360px;
+    border: none;
+}
+
+
+/* ===================================================
+   25. SOCIAL LINKS
+   =================================================== */
+
+.social-links {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin: var(--space-lg) 0;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--col-cream);
+    border: 1px solid var(--col-border);
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--col-espresso-dark);
+    text-decoration: none;
+    transition: background-color 0.15s;
+}
+
+.social-link:hover {
+    background-color: var(--col-terracotta);
+    color: var(--col-espresso-dark);
+    text-decoration: none;
+}
+
+
+/* ===================================================
+   26. EVENTS PAGE
+   =================================================== */
+
+.event-month {
+    margin-bottom: var(--space-xl);
+}
+
+.event-month-heading {
+    font-family: var(--font-body);
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--col-text-muted);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--col-border);
+    margin-bottom: var(--space-md);
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.event-meta {
+    font-size: 0.82em;
+    color: var(--col-text-mid);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px var(--space-md);
+    margin-bottom: var(--space-xs);
+}
+
+.event-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+
+/* ===================================================
+   27. WATCH PAGE
+   =================================================== */
+
+.watch-featured {
+    margin-bottom: var(--space-xl);
+}
+
+.watch-thumbnail {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--col-border);
+}
+
+.watch-thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+
+.watch-thumbnail:hover img { opacity: 0.75; }
+
+.watch-play-button {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(44, 24, 16, 0.75);
+    color: var(--col-cream);
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    pointer-events: none;
+}
+
+.watch-series-badge {
+    display: inline-block;
+    background-color: var(--col-espresso-mid);
+    color: var(--col-cream);
+    font-size: 0.65em;
+    font-weight: 600;
+    font-style: italic;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: var(--space-sm);
+}
+
+.watch-featured-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--col-espresso-dark);
+    margin: var(--space-sm) 0 4px;
+}
+
+.watch-meta {
+    font-size: 0.82em;
+    color: var(--col-text-mid);
+}
+
+.watch-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.watch-list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-left: 3px solid var(--col-terracotta);
+    background: var(--col-white);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    border-top: 1px solid var(--col-border);
+    border-right: 1px solid var(--col-border);
+    border-bottom: 1px solid var(--col-border);
+}
+
+.watch-embed--small { flex-shrink: 0; width: 120px; }
+.watch-list-info { flex: 1; min-width: 0; }
+
+.watch-list-title {
+    font-weight: 700;
+    color: var(--col-espresso-dark);
+    font-size: 0.9em;
+    margin: 0 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.watch-embed iframe {
+    display: block;
+    border: none;
+    border-radius: var(--radius-sm);
+    aspect-ratio: 16 / 9;
+}
+
+
+/* ===================================================
+   28. FOOTER
+   =================================================== */
+
+footer {
+    background-color: var(--col-espresso-dark);
+    padding: var(--space-xl) 0 var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.footer-stamp-img {
+    width: 80px;
+    height: 80px;
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+.footer-info {
+    flex: 1;
+}
+
+.footer-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--col-cream);
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+footer p {
+    color: var(--col-sand);
+    font-size: 0.85em;
+    margin-bottom: 4px;
+}
+
+footer p:last-child { margin-bottom: 0; }
+
+.footer-links a {
+    color: var(--col-terracotta);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--col-cream);
+    text-decoration: underline;
+}
+
+.footer-charity {
+    opacity: 0.6;
+    font-size: 0.75em !important;
+}
+
+
+/* ===================================================
+   29. RESPONSIVE (max-width: 700px)
+   =================================================== */
+
+/* Hamburger hidden on desktop */
+#nav-hamburger {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    .logo { height: 56px; }
+
+    /* Hide tagline in header on mobile — too cramped */
+    .header-tagline { display: none; }
+
+    /* Hamburger button */
+    #nav-hamburger {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--col-sand);
+        font-size: 1.6em;
+        cursor: pointer;
+        padding: 10px 0;
+        line-height: 1;
+        margin-left: auto;
+    }
+
+    nav .container { flex-wrap: wrap; }
+
+    nav ul {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+    }
+
+    nav ul.nav-open { display: flex; }
+
+    nav ul li ul.dropdown {
+        position: static;
+        box-shadow: none;
+        display: none;
+        border-top: none;
+        border-radius: 0;
+        border-left: 3px solid var(--col-terracotta);
+        margin-left: var(--space-md);
+    }
+
+    nav ul li ul.dropdown.submenu-open { display: flex; }
+
+    nav ul li ul.dropdown li a { padding-left: var(--space-lg); }
+
+    /* Hero: tighten triangle on mobile */
+    .hero { min-height: 260px; }
+
+    .hero-tagline-line:nth-child(1) { font-size: 1.45em; }
+    .hero-tagline-line:nth-child(2) { font-size: 1.1em;  margin-left: 1em; }
+    .hero-tagline-line:nth-child(3) { font-size: 1.1em;  margin-left: 2em; }
+
+    /* Info strip: 2×2 grid on mobile */
+    .info-strip-inner {
+        flex-wrap: wrap;
+    }
+
+    .info-strip-item {
+        flex: 0 0 50%;
+        border-bottom: 1px solid var(--col-border);
+    }
+
+    .info-strip-item:nth-child(2) { border-right: none; }
+    .info-strip-item:nth-child(3),
+    .info-strip-item:nth-child(4) { border-bottom: none; }
+
+    .feature-panels { grid-template-columns: 1fr; }
+    .watch-list     { grid-template-columns: 1fr; }
+    .sermon-grid    { grid-template-columns: 1fr; }
+
+    .footer-inner   { flex-direction: column; gap: var(--space-lg); text-align: center; }
+    .footer-stamp-img { width: 60px; height: 60px; }
+
+    .scripture-card { padding: var(--space-lg); }
+
+    .map-container iframe { height: 260px; }
+
+    .photo-row { flex-direction: column; }
+    .card-content-with-image { flex-direction: column; }
+}

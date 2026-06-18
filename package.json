@@ -1,11 +1,11 @@
 {
   "name": "new-cathcartuf-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cathcart United Free Church website v2",
   "main": "index.js",
   "scripts": {
-    "build": "npx --no-install eleventy",
-    "build:azure": "npx --no-install eleventy"
+    "start": "eleventy --serve",
+    "build": "eleventy"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,6 @@
   },
   "homepage": "https://github.com/cathcartufchurch/new-cathcartuf-website#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.6",
-    "js-yaml": "^4.2.0",
-    "marked": "^18.0.5"
+    "@11ty/eleventy": "^3.1.6"
   }
 }

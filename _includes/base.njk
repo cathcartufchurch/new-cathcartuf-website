@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }} — {{ site.name }}</title>
+    <meta name="description" content="{{ description or site.tagline }}" />
+
+    <!-- Google Fonts: Playfair Display (headings) + Nunito (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+
+    {# ===== HEADER ===== #}
+    <header>
+        <div class="container header-inner">
+            <a href="/" class="header-logo-link" aria-label="{{ site.name }} — home">
+                <img src="/assets/images/logo.png" alt="{{ site.name }}" class="logo" />
+            </a>
+            <div class="header-tagline" aria-hidden="true">
+                <span class="tagline-primary">Growing together in Christ.</span>
+                <span class="tagline-secondary">Serving the community. Sharing Jesus' love.</span>
+            </div>
+        </div>
+    </header>
+
+    {# ===== NAVIGATION ===== #}
+    <nav aria-label="Main navigation">
+        <div class="container">
+            <button id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
+            <ul id="nav-list">
+                {% for item in site.nav %}
+                <li{% if item.children %} class="has-dropdown"{% endif %}>
+                    <a href="{{ item.url }}"
+                       {% if page.url == item.url %}class="active" aria-current="page"{% endif %}>
+                        {{ item.label }}
+                        {% if item.children %}<span class="nav-arrow" aria-hidden="true">&#9662;</span>{% endif %}
+                    </a>
+                    {% if item.children %}
+                    <ul class="dropdown">
+                        {% for child in item.children %}
+                        <li>
+                            <a href="{{ child.url }}"
+                               {% if page.url == child.url %}class="active" aria-current="page"{% endif %}>
+                                {{ child.label }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+
+    {# ===== MAIN CONTENT ===== #}
+    <main id="main-content">
+        {{ content | safe }}
+    </main>
+
+    {# ===== FOOTER ===== #}
+    <footer>
+        <div class="container footer-inner">
+            <div class="footer-stamp">
+                <img src="/assets/svg/stamp-warm.svg" alt="Grow · Serve · Share" class="footer-stamp-img" />
+            </div>
+            <div class="footer-info">
+                <p class="footer-name">{{ site.name }}</p>
+                <p>{{ site.address }}</p>
+                <p class="footer-links">
+                    <a href="/contact/">Contact</a> &bull;
+                    <a href="{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a>
+                </p>
+                <p class="footer-charity">Scottish Registered Charity No: {{ site.charity }}</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/nav.js"></script>
+</body>
+</html>

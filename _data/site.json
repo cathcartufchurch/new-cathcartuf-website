@@ -1,0 +1,61 @@
+{
+    "name": "Cathcart United Free Church",
+    "shortName": "Cathcart UF",
+    "tagline": "Growing together in Christ. Serving the community. Sharing Jesus' love.",
+    "taglineLines": [
+        "Growing together in Christ.",
+        "Serving the community.",
+        "Sharing Jesus\u2019 love."
+    ],
+    "stamp": "Grow \u00b7 Serve \u00b7 Share",
+    "address": "7 Struan Road, Glasgow G44 3AT",
+    "charity": "SC001573",
+    "facebook": "https://www.facebook.com/cathcartuf/",
+    "email": "info@cathcartuf.org.uk",
+    "sunday": "Sundays at 11am",
+    "midweek": "Wednesdays at 10:30am",
+    "nav": [
+        {
+            "label": "Home",
+            "url": "/"
+        },
+        {
+            "label": "Visit",
+            "url": "/visit/",
+            "children": [
+                { "label": "Meetings", "url": "/visit/" },
+                { "label": "Sunday at 11", "url": "/visit/#sunday" },
+                { "label": "Midweek at 10:30", "url": "/visit/#midweek" },
+                { "label": "How to Find Us", "url": "/find-us/" }
+            ]
+        },
+        {
+            "label": "Connect",
+            "url": "/connect/",
+            "children": [
+                { "label": "Prayer", "url": "/connect/" },
+                { "label": "Prayer Time", "url": "/connect/#prayer-time" },
+                { "label": "Prayer Request", "url": "/connect/#prayer-request" },
+                { "label": "Contact Us", "url": "/contact/" }
+            ]
+        },
+        {
+            "label": "Life",
+            "url": "/life/",
+            "children": [
+                { "label": "Church Life", "url": "/life/" },
+                { "label": "Off the CUF", "url": "/life/off-the-cuf/" },
+                { "label": "Partnerships", "url": "/life/partnerships/" },
+                { "label": "Buddy Churches", "url": "/life/#buddy-churches" }
+            ]
+        },
+        {
+            "label": "Events",
+            "url": "/events/"
+        },
+        {
+            "label": "Watch",
+            "url": "/watch/"
+        }
+    ]
+}

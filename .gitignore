@@ -1,0 +1,14 @@
+# Eleventy build output
+# _site/ — committed to repo for Azure deployment
+
+# Node modules
+node_modules/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Environment / secrets
+.env
