@@ -6,23 +6,22 @@
   "scripts": {
     "build": "npx --no-install eleventy",
     "build:azure": "npx --no-install eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cathcartufchurch/new-cathcartuf-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/cathcartufchurch/new-cathcartuf-website/issues"
+  },
+  "homepage": "https://github.com/cathcartufchurch/new-cathcartuf-website#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "js-yaml": "^4.2.0",
+    "marked": "^18.0.5"
   }
-},
-"repository": {
-  "type": "git",
-  "url": "git+https://github.com/cathcartufchurch/new-cathcartuf-website.git"
-},
-"keywords": [],
-"author": "",
-"license": "ISC",
-"type": "commonjs",
-"bugs": {
-  "url": "https://github.com/cathcartufchurch/new-cathcartuf-website/issues"
-},
-"homepage": "https://github.com/cathcartufchurch/new-cathcartuf-website#readme",
-"devDependencies": {
-  "@11ty/eleventy": "^3.1.6",
-  "js-yaml": "^4.2.0",
-  "marked": "^18.0.5"
-}
 }
