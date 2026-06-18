@@ -1,7 +1,244 @@
-<head>
-    <title>Test</title>
 
-</head>
-<body>
-    <h2>Empty on purpose</h2>
-</body>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+  
+  .mock-wrap { font-family: 'Nunito', sans-serif; max-width: 680px; margin: 0 auto; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+  
+  /* HEADER */
+  .mock-header { background: #2C1810; padding: 14px 20px; display: flex; align-items: center; gap: 12px; }
+  .mock-logo-circle { width: 38px; height: 38px; border-radius: 50%; background: #D4956A; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #2C1810; flex-shrink: 0; }
+  .mock-church-name { font-family: 'Playfair Display', serif; color: #F5E6D8; font-size: 15px; line-height: 1.2; }
+  .mock-church-name span { display: block; font-size: 10px; color: #C4A882; font-family: 'Nunito', sans-serif; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* NAV */
+  .mock-nav { background: #3D2218; padding: 0 20px; display: flex; gap: 0; }
+  .mock-nav-item { padding: 10px 14px; font-size: 12px; color: #C4A882; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; border-bottom: 2px solid transparent; }
+  .mock-nav-item.active { color: #F5E6D8; border-bottom: 2px solid #D4956A; }
+  .mock-nav-item:hover { color: #F5E6D8; }
+
+  /* HERO */
+  .mock-hero { position: relative; background: linear-gradient(160deg, #3D2218 0%, #6B3A28 50%, #8B4E35 100%); height: 200px; display: flex; align-items: flex-end; padding: 0; overflow: hidden; }
+  .mock-hero-img-hint { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(212,149,106,0.04) 0px, rgba(212,149,106,0.04) 1px, transparent 1px, transparent 12px); }
+  .mock-hero-label { position: absolute; top: 16px; right: 16px; background: rgba(44,24,16,0.7); color: #C4A882; font-size: 10px; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.06em; }
+  .mock-hero-text { position: relative; padding: 20px; }
+  .mock-hero-heading { font-family: 'Playfair Display', serif; color: #F5E6D8; font-size: 22px; font-style: italic; line-height: 1.3; margin-bottom: 6px; }
+  .mock-hero-sub { color: #C4A882; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* QUICK FACTS STRIP */
+  .mock-strip { background: #F5E6D8; display: flex; }
+  .mock-strip-item { flex: 1; padding: 12px 8px; text-align: center; border-right: 0.5px solid #D4B896; }
+  .mock-strip-item:last-child { border-right: none; }
+  .mock-strip-icon { font-size: 18px; display: block; margin-bottom: 2px; }
+  .mock-strip-label { font-size: 10px; font-weight: 700; color: #3D2218; text-transform: uppercase; letter-spacing: 0.05em; display: block; }
+  .mock-strip-value { font-size: 11px; color: #6B3A28; display: block; }
+
+  /* CONTENT AREA */
+  .mock-content { background: #FFFBF8; padding: 20px; }
+
+  /* NOTICE */
+  .mock-notice { background: #6B3A28; border-radius: var(--border-radius-md); padding: 14px 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .mock-notice-icon { font-size: 22px; flex-shrink: 0; }
+  .mock-notice-text { font-size: 12px; color: #F5E6D8; line-height: 1.5; }
+  .mock-notice-text strong { display: block; font-size: 13px; color: #F5E6D8; margin-bottom: 2px; }
+  .mock-notice-link { color: #D4956A; font-weight: 700; font-size: 11px; }
+
+  /* SECTION HEADING */
+  .mock-section-head { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .mock-section-icon { font-size: 16px; }
+  .mock-section-title { font-family: 'Playfair Display', serif; font-size: 16px; color: #2C1810; }
+  .mock-section-line { flex: 1; height: 0.5px; background: #D4B896; }
+
+  /* COMING UP CARDS */
+  .mock-event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .mock-event-card { background: #fff; border: 0.5px solid #D4B896; border-radius: var(--border-radius-md); padding: 12px; border-top: 3px solid #D4956A; }
+  .mock-event-date { font-size: 10px; font-weight: 700; color: #D4956A; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .mock-event-title { font-size: 13px; font-weight: 700; color: #2C1810; margin-bottom: 8px; line-height: 1.3; }
+  .mock-event-meta { font-size: 11px; color: #6B3A28; display: flex; flex-direction: column; gap: 2px; }
+  .mock-event-meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* NEWS */
+  .mock-news-list { margin-bottom: 20px; }
+  .mock-news-item { background: #fff; border: 0.5px solid #D4B896; border-radius: var(--border-radius-md); padding: 12px 14px; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }
+  .mock-news-img { width: 48px; height: 48px; border-radius: var(--border-radius-md); background: #E8D4C0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .mock-news-body { flex: 1; }
+  .mock-news-title { font-size: 13px; font-weight: 700; color: #2C1810; margin-bottom: 4px; }
+  .mock-news-text { font-size: 11px; color: #6B3A28; line-height: 1.5; }
+  .mock-news-link { color: #D4956A; font-weight: 700; font-size: 11px; }
+
+  /* FEATURE CARDS */
+  .mock-features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .mock-feature { background: #fff; border: 0.5px solid #D4B896; border-radius: var(--border-radius-md); padding: 14px 12px; text-align: center; }
+  .mock-feature-icon { font-size: 26px; display: block; margin-bottom: 6px; }
+  .mock-feature-title { font-size: 12px; font-weight: 700; color: #2C1810; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .mock-feature-text { font-size: 11px; color: #6B3A28; line-height: 1.5; }
+
+  /* SCRIPTURE */
+  .mock-scripture { background: #3D2218; border-radius: var(--border-radius-md); padding: 16px 20px; margin-bottom: 20px; text-align: center; }
+  .mock-scripture p { font-family: 'Playfair Display', serif; font-style: italic; color: #F5E6D8; font-size: 13px; line-height: 1.7; margin-bottom: 6px; }
+  .mock-scripture cite { font-size: 11px; color: #D4956A; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* FOOTER */
+  .mock-footer { background: #2C1810; padding: 14px 20px; text-align: center; font-size: 11px; color: #8B6E5A; }
+  .mock-footer a { color: #D4956A; }
+
+  /* PALETTE SWATCH */
+  .mock-palette { display: flex; gap: 0; height: 8px; }
+  .mock-swatch { flex: 1; }
+</style>
+
+<div class="mock-wrap">
+
+  <div class="mock-palette">
+    <div class="mock-swatch" style="background:#2C1810;"></div>
+    <div class="mock-swatch" style="background:#3D2218;"></div>
+    <div class="mock-swatch" style="background:#6B3A28;"></div>
+    <div class="mock-swatch" style="background:#D4956A;"></div>
+    <div class="mock-swatch" style="background:#C4A882;"></div>
+    <div class="mock-swatch" style="background:#F5E6D8;"></div>
+    <div class="mock-swatch" style="background:#FFFBF8;"></div>
+  </div>
+
+  <div class="mock-header">
+    <div class="mock-logo-circle">CUF</div>
+    <div class="mock-church-name">
+      Cathcart United Free Church
+      <span>Glasgow · Growing together in Christ</span>
+    </div>
+  </div>
+
+  <div class="mock-nav">
+    <div class="mock-nav-item active">Home</div>
+    <div class="mock-nav-item">Visit</div>
+    <div class="mock-nav-item">Connect</div>
+    <div class="mock-nav-item">Life</div>
+    <div class="mock-nav-item">Watch</div>
+  </div>
+
+  <div class="mock-hero">
+    <div class="mock-hero-img-hint"></div>
+    <div class="mock-hero-label">📷 Hero photo goes here</div>
+    <div class="mock-hero-text">
+      <div class="mock-hero-heading">A place for everyone<br/>in Cathcart.</div>
+      <div class="mock-hero-sub">Sundays at 11 · Everyone welcome</div>
+    </div>
+  </div>
+
+  <div class="mock-strip">
+    <div class="mock-strip-item">
+      <span class="mock-strip-icon">🗓️</span>
+      <span class="mock-strip-label">Sunday</span>
+      <span class="mock-strip-value">11am</span>
+    </div>
+    <div class="mock-strip-item">
+      <span class="mock-strip-icon">⏰</span>
+      <span class="mock-strip-label">Midweek</span>
+      <span class="mock-strip-value">Wed 10:30am</span>
+    </div>
+    <div class="mock-strip-item">
+      <span class="mock-strip-icon">☕</span>
+      <span class="mock-strip-label">After service</span>
+      <span class="mock-strip-value">Tea & coffee</span>
+    </div>
+    <div class="mock-strip-item">
+      <span class="mock-strip-icon">📍</span>
+      <span class="mock-strip-label">Find us</span>
+      <span class="mock-strip-value">7 Struan Rd</span>
+    </div>
+  </div>
+
+  <div class="mock-content">
+
+    <div class="mock-notice">
+      <span class="mock-notice-icon">✋</span>
+      <div class="mock-notice-text">
+        <strong>We're looking for a minister</strong>
+        Full or part-time · Help us grow together in Christ
+        <a class="mock-notice-link"> Find out more →</a>
+      </div>
+    </div>
+
+    <div class="mock-section-head">
+      <span class="mock-section-icon">🗓️</span>
+      <span class="mock-section-title">Coming Up</span>
+      <span class="mock-section-line"></span>
+    </div>
+
+    <div class="mock-event-grid">
+      <div class="mock-event-card">
+        <div class="mock-event-date">Sun 28 Jun</div>
+        <div class="mock-event-title">Love Your Church — Sunday Service</div>
+        <div class="mock-event-meta">
+          <span>⏰ 11am</span>
+          <span>📖 Acts · Tony Merida</span>
+        </div>
+      </div>
+      <div class="mock-event-card">
+        <div class="mock-event-date">Fri 4 Jul</div>
+        <div class="mock-event-title">Joint Prayer Breakfast</div>
+        <div class="mock-event-meta">
+          <span>⏰ 8:30–10am</span>
+          <span>🤝 With CofS & Baptist</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mock-section-head">
+      <span class="mock-section-icon">📰</span>
+      <span class="mock-section-title">Latest News</span>
+      <span class="mock-section-line"></span>
+    </div>
+
+    <div class="mock-news-list">
+      <div class="mock-news-item">
+        <div class="mock-news-img">❓</div>
+        <div class="mock-news-body">
+          <div class="mock-news-title">Alpha Course — Starting September</div>
+          <div class="mock-news-text">A new course starting 3 Sep at Cathcart Church of Scotland. Runs until Dec. <a class="mock-news-link">Find out more →</a></div>
+        </div>
+      </div>
+      <div class="mock-news-item">
+        <div class="mock-news-img">🤝</div>
+        <div class="mock-news-body">
+          <div class="mock-news-title">Churches Renew Their Covenant</div>
+          <div class="mock-news-text">Cathcart CofS and Cathcart UF renewed their partnership, first formed in 2011. <a class="mock-news-link">Find out more →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mock-section-head">
+      <span class="mock-section-icon">👋</span>
+      <span class="mock-section-title">Welcome</span>
+      <span class="mock-section-line"></span>
+    </div>
+
+    <div class="mock-features">
+      <div class="mock-feature">
+        <span class="mock-feature-icon">🙏</span>
+        <div class="mock-feature-title">Prayer</div>
+        <div class="mock-feature-text">Send us a request — we'd love to pray for you.</div>
+      </div>
+      <div class="mock-feature">
+        <span class="mock-feature-icon">🤝</span>
+        <div class="mock-feature-title">Serve</div>
+        <div class="mock-feature-text">Get involved in our community and outreach.</div>
+      </div>
+      <div class="mock-feature">
+        <span class="mock-feature-icon">✉️</span>
+        <div class="mock-feature-title">Get in Touch</div>
+        <div class="mock-feature-text">Questions? Just say hello — we'd love to hear.</div>
+      </div>
+    </div>
+
+    <div class="mock-scripture">
+      <p>"You are all one in Christ Jesus."</p>
+      <cite>Galatians 3:28</cite>
+    </div>
+
+  </div>
+
+  <div class="mock-footer">
+    Cathcart United Free Church · 7 Struan Road, Glasgow G44 3AT · SC001573<br/>
+    <a href="#">Contact</a> · <a href="#">Facebook</a>
+  </div>
+
+</div>
