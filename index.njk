@@ -1,0 +1,199 @@
+---
+title: Welcome
+description: "Growing together in Christ. Serving the community. Sharing Jesus' love."
+layout: base.njk
+showNotice: true
+noticeIcon: "✋"
+noticeTitle: "We're looking for a minister"
+noticeBody: "Full or part-time · Help us grow together in Christ"
+noticeLink: "/life/ministry-opportunity/"
+noticeLinkText: "Find out more"
+---
+
+{# ============================================================
+   HERO
+   ============================================================ #}
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-tagline">
+                <p class="hero-tagline-line">A place for everyone</p>
+                <p class="hero-tagline-line">in Cathcart.</p>
+            </div>
+            <p class="hero-sub">{{ site.sunday }} &middot; Everyone welcome</p>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   INFO STRIP
+   ============================================================ #}
+<div class="info-strip" aria-label="Quick facts">
+    <div class="info-strip-inner container">
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🗓️</span>
+            <span class="info-strip-label">Sunday</span>
+            <span class="info-strip-value">11am</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">⏰</span>
+            <span class="info-strip-label">Midweek</span>
+            <span class="info-strip-value">Wed 10:30am</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">☕</span>
+            <span class="info-strip-label">After service</span>
+            <span class="info-strip-value">Tea &amp; coffee</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">📍</span>
+            <span class="info-strip-label">Find us</span>
+            <span class="info-strip-value">7 Struan Rd</span>
+        </div>
+    </div>
+</div>
+
+{# ============================================================
+   PAGE BODY
+   ============================================================ #}
+<div class="home-body">
+    <div class="container">
+
+        {# --- NOTICE CARD --- #}
+        {% if showNotice %}
+        <div class="notice-card" role="note">
+            <span class="notice-card-icon" aria-hidden="true">{{ noticeIcon }}</span>
+            <div class="notice-card-body">
+                <h3>{{ noticeTitle }}</h3>
+                <p>{{ noticeBody }} <a href="{{ noticeLink }}" class="section-link">{{ noticeLinkText }} &rarr;</a></p>
+            </div>
+        </div>
+        {% endif %}
+
+        {# --- COMING UP --- #}
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">🗓️</span>
+            <h2>Coming Up</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        {% set upcomingEvents = collections.events | futureEvents %}
+        {% if upcomingEvents and upcomingEvents.length > 0 %}
+        <div class="event-grid">
+            {% for event in upcomingEvents %}
+            {% if loop.index <= 3 %}
+            <article class="event-card">
+                <p class="event-card-date">{{ event.date | dateFormat }}</p>
+                <h3>{{ event.title }}</h3>
+                <div class="event-card-meta">
+                    {% if event.startTime %}
+                    <span>⏰ {{ event.startTime }}{% if event.endTime %}&ndash;{{ event.endTime }}{% endif %}</span>
+                    {% endif %}
+                    {% if event.location %}
+                    <span>📍 {{ event.location }}</span>
+                    {% endif %}
+                    {% if event.description %}
+                    <span class="event-card-desc">{{ event.description | truncate(80) }}</span>
+                    {% endif %}
+                </div>
+                {% if event.link %}
+                <a href="{{ event.link }}" class="section-link">{{ event.linkText or "Find out more" }} &rarr;</a>
+                {% endif %}
+            </article>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="home-empty">No upcoming events at the moment — check back soon.</p>
+        {% endif %}
+
+        <p class="more-events-link"><a href="/events/" class="section-link">See all events &rarr;</a></p>
+
+        {# --- STAMP DIVIDER --- #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# --- LATEST NEWS --- #}
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">📰</span>
+            <h2>Latest News</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        {% set activeNewsItems = collections.news | activeNews %}
+        {% if activeNewsItems and activeNewsItems.length > 0 %}
+        <div class="news-list">
+            {% for item in activeNewsItems %}
+            {% if loop.index <= 3 %}
+            <article class="news-item">
+                <div class="news-item-thumb-placeholder" aria-hidden="true">
+                    {% if item.image %}
+                    <img src="{{ item.image }}" alt="{{ item.imageAlt or item.title }}" class="news-item-thumb" />
+                    {% else %}
+                    📰
+                    {% endif %}
+                </div>
+                <div class="news-item-body">
+                    <h3>{{ item.title }}</h3>
+                    <p>
+                        {% if item.description %}{{ item.description | truncate(120) }}
+                        {% elif item.details %}{{ item.details | striptags | truncate(120) }}
+                        {% endif %}
+                        {% if item.link %}
+                        <a href="{{ item.link }}" class="section-link">{{ item.linkText or "Find out more" }} &rarr;</a>
+                        {% endif %}
+                    </p>
+                </div>
+            </article>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="home-empty">No news items at the moment.</p>
+        {% endif %}
+
+        {# --- STAMP DIVIDER --- #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# --- WELCOME / FEATURE PANELS --- #}
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">👋</span>
+            <h2>Welcome</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="feature-panels">
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">🙏</span>
+                <h3>Prayer</h3>
+                <p>Send us a request — we'd love to pray for you.</p>
+                <a href="/connect/" class="section-link">Pray with us &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">🤝</span>
+                <h3>Serve</h3>
+                <p>Get involved in our community and outreach.</p>
+                <a href="/life/" class="section-link">Church life &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">✉️</span>
+                <h3>Get in Touch</h3>
+                <p>Questions? Just say hello — we'd love to hear.</p>
+                <a href="/contact/" class="section-link">Contact us &rarr;</a>
+            </div>
+        </div>
+
+        {# --- SCRIPTURE CARD --- #}
+        <div class="scripture-card">
+            <blockquote>
+                <p>"So then, just as you received Christ Jesus as Lord, continue to live your lives in him, rooted and built up in him, strengthened in the faith as you were taught, and overflowing with thankfulness."</p>
+            </blockquote>
+            <cite class="scripture-ref">Colossians 2:6&ndash;7</cite>
+        </div>
+
+    </div>{# end .container #}
+</div>{# end .home-body #}
