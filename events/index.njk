@@ -1,0 +1,231 @@
+---
+title: Events
+description: "Upcoming events and activities at Cathcart United Free Church, Glasgow."
+layout: base.njk
+---
+
+{# ============================================================
+   HERO
+   ============================================================ #}
+<section class="hero">
+    <img src="/assets/images/logo.png" alt="" class="hero-image" aria-hidden="true" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-tagline">
+                <p class="hero-tagline-line">What's on at</p>
+                <p class="hero-tagline-line">Cathcart UF.</p>
+            </div>
+            <p class="hero-sub">Special events, activities and gatherings</p>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   INFO STRIP
+   ============================================================ #}
+<div class="info-strip" aria-label="Events at a glance">
+    <div class="info-strip-inner container">
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🗓️</span>
+            <span class="info-strip-label">Sunday service</span>
+            <span class="info-strip-value">{{ site.sunday }}</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">⏰</span>
+            <span class="info-strip-label">Midweek</span>
+            <span class="info-strip-value">{{ site.midweek }}</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🎉</span>
+            <span class="info-strip-label">Off the CUF</span>
+            <span class="info-strip-value">1st Saturday monthly</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">📅</span>
+            <span class="info-strip-label">Full calendar</span>
+            <span class="info-strip-value"><a href="/calendar/">View calendar</a></span>
+        </div>
+    </div>
+</div>
+
+{# ============================================================
+   PAGE BODY
+   ============================================================ #}
+<div class="home-body">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">🗓️</span>
+            <h2>Upcoming Events</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <p>Here you will find details of special events and activities coming up at
+        Cathcart United Free Church and in our wider community. For our regular weekly
+        meetings please see the <a href="/visit/" class="section-link">Visit page</a>.</p>
+
+        {# ── EVENT LIST GROUPED BY MONTH ── #}
+        {% set currentEventsList = collections.events | currentEvents %}
+        {% if currentEventsList and currentEventsList.length > 0 %}
+
+            {% set currentMonth = "" %}
+            {% for event in currentEventsList %}
+
+                {% set eventMonth = event.date | dateMonthYear %}
+                {% if eventMonth != currentMonth %}
+                    {% if not loop.first %}</div></div>{% endif %}
+                    <div class="event-month">
+                    <p class="event-month-heading">{{ eventMonth }}</p>
+                    <div class="event-list">
+                    {% set currentMonth = eventMonth %}
+                {% endif %}
+
+                <div class="coming-up-card">
+
+                    {# Date block #}
+                    <div class="coming-up-date-block" aria-hidden="true">
+                        <strong>{{ event.date | dateDay }}</strong>
+                        <span>{{ event.date | dateMonth }}</span>
+                    </div>
+
+                    <div class="coming-up-info">
+
+                        {# Title with optional image #}
+                        {% if event.image and event.imagePosition == "title" %}
+                        <div class="event-title-with-image">
+                            <h4>{{ event.title }}</h4>
+                            <div class="card-image">
+                                <img src="{{ event.image }}"
+                                     alt="{{ event.imageAlt }}"
+                                     class="content-image-{{ event.imageSize or 'small' }}" />
+                            </div>
+                        </div>
+                        {% else %}
+                        <h4>{{ event.title }}</h4>
+                        {% endif %}
+
+                        {# Meta: time, location #}
+                        <div class="coming-up-meta">
+                            {% if event.endDate %}
+                            <span>📅 {{ event.date | dateFormat }} &ndash; {{ event.endDate | dateFormat }}</span>
+                            {% endif %}
+                            {% if event.startTime %}
+                            <span>⏰ {{ event.startTime }}{% if event.endTime %}&ndash;{{ event.endTime }}{% endif %}</span>
+                            {% endif %}
+                            {% if event.location %}
+                            <span>📍 {{ event.location }}</span>
+                            {% endif %}
+                        </div>
+
+                        {# Top image #}
+                        {% if event.image and event.imagePosition == "top" %}
+                        <img src="{{ event.image }}"
+                             alt="{{ event.imageAlt }}"
+                             class="content-image-full" />
+                        {% endif %}
+
+                        {# Right float image #}
+                        {% if event.image and event.imagePosition == "right" %}
+                        <div style="float:right; margin: 0 0 var(--space-sm) var(--space-md);">
+                            <img src="{{ event.image }}"
+                                 alt="{{ event.imageAlt }}"
+                                 class="content-image-{{ event.imageSize or 'medium' }}" />
+                        </div>
+                        {% endif %}
+
+                        {# Description #}
+                        {% if event.description %}
+                        <p>{{ event.description }}</p>
+                        {% endif %}
+
+                        {# Details — markdown #}
+                        {% if event.details %}
+                        {{ event.details | markdown | safe }}
+                        {% endif %}
+
+                        {# Link #}
+                        {% if event.link %}
+                            {% if "http" in event.link %}
+                            <a href="{{ event.link }}" class="section-link"
+                               target="_blank" rel="noopener">
+                                {{ event.linkText or "Find out more" }} &rarr;
+                            </a>
+                            {% else %}
+                            <a href="{{ event.link }}" class="section-link">
+                                {{ event.linkText or "Find out more" }} &rarr;
+                            </a>
+                            {% endif %}
+                        {% endif %}
+
+                    </div>{# end .coming-up-info #}
+                </div>{# end .coming-up-card #}
+
+            {% endfor %}
+            </div></div>{# close final month's event-list and event-month #}
+
+        {% else %}
+        <p class="home-empty">No upcoming events at the moment — please check back soon.</p>
+        {% endif %}
+
+        {# ── STAMP DIVIDER ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# ── REGULAR ACTIVITIES ── #}
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">🔄</span>
+            <h2>Regular Activities</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <p>As well as the special events listed above, we have a number of regular
+        activities running throughout the year:</p>
+
+        <ul>
+            <li><a href="/visit/" class="section-link">Sunday and Wednesday services</a></li>
+            <li><a href="/connect/#prayer-time" class="section-link">Monday prayer meetings</a></li>
+            <li><a href="/life/" class="section-link">Fellowship groups, Moments Café, Quiet Spaces and Renew Wellbeing</a></li>
+            <li><a href="/life/off-the-cuf/" class="section-link">Off the CUF — first Saturday of every month</a></li>
+        </ul>
+
+        {# ── CALENDAR LINK ── #}
+        <div class="notice-card" role="note" style="margin-top: var(--space-xl);">
+            <span class="notice-card-icon" aria-hidden="true">📅</span>
+            <div class="notice-card-body">
+                <h3>Full Calendar</h3>
+                <p>View all our regular and special events in one place on our
+                interactive calendar.
+                <a href="/calendar/" class="section-link">Open the calendar &rarr;</a></p>
+            </div>
+        </div>
+
+        {# ── FOOTER PANELS ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        <div class="feature-panels">
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">🗓️</span>
+                <h3>Visit Us</h3>
+                <p>Join us on Sundays at 11am or Wednesdays at 10:30am.</p>
+                <a href="/visit/" class="section-link">Plan your visit &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">🎉</span>
+                <h3>Off the CUF</h3>
+                <p>Our monthly café-style morning — food, friendship and faith.</p>
+                <a href="/life/off-the-cuf/" class="section-link">Find out more &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">✉️</span>
+                <h3>Get in Touch</h3>
+                <p>Questions about our events or activities?</p>
+                <a href="/contact/" class="section-link">Contact us &rarr;</a>
+            </div>
+        </div>
+
+    </div>{# end .container #}
+</div>{# end .home-body #}

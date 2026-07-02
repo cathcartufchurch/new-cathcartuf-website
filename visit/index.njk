@@ -1,0 +1,153 @@
+---
+title: Visit Us
+description: "Join us on Sundays at 11am or Wednesdays at 10:30am — in person or online. Everyone is welcome at Cathcart United Free Church."
+layout: base.njk
+---
+
+{# ============================================================
+   HERO
+   ============================================================ #}
+<section class="hero">
+    <img src="/assets/images/logo.png" alt="" class="hero-image" aria-hidden="true" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-tagline">
+                <p class="hero-tagline-line">You are welcome here.</p>
+            </div>
+            <p class="hero-sub">{{ site.sunday }} &middot; {{ site.midweek }}</p>
+            <a href="#sunday" class="hero-cta">See our meetings &darr;</a>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   INFO STRIP
+   ============================================================ #}
+<div class="info-strip" aria-label="Meeting times at a glance">
+    <div class="info-strip-inner container">
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🗓️</span>
+            <span class="info-strip-label">Sunday</span>
+            <span class="info-strip-value">11am – 12:15pm</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">⏰</span>
+            <span class="info-strip-label">Midweek</span>
+            <span class="info-strip-value">Wed 10:30am</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🏠</span>
+            <span class="info-strip-label">In person</span>
+            <span class="info-strip-value">7 Struan Road</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">💻</span>
+            <span class="info-strip-label">Online</span>
+            <span class="info-strip-value">Zoom &amp; YouTube</span>
+        </div>
+    </div>
+</div>
+
+{# ============================================================
+   PAGE BODY
+   ============================================================ #}
+<div class="home-body">
+    <div class="container">
+
+        {# ── SUNDAY ── #}
+        <div class="section-heading" id="sunday">
+            <span class="section-heading-icon" aria-hidden="true">🗓️</span>
+            <h2>Sunday at 11</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="card-content-with-image">
+            <div>
+                <p>We meet together in the church and on Zoom every Sunday from
+                <strong>11:00am to 12:15pm</strong>. Our Sunday gathering is the heart of our week
+                together. It is a time to worship God, explore the Bible, pray and sing. Whether you are
+                joining us in person or online, you are warmly welcome.</p>
+
+                <p>After the service there is tea and coffee, and plenty of opportunity to chat and
+                get to know each other. We are a friendly congregation and nobody need feel they
+                are on their own.</p>
+            </div>
+            <div class="card-image">
+                <div class="photo-placeholder content-image-medium">
+                    <img src="/assets/images/logo.png" alt="Sunday worship at Cathcart United Free Church" />
+                </div>
+            </div>
+        </div>
+
+        {# Online options notice #}
+        <div class="notice-card" role="note">
+            <span class="notice-card-icon" aria-hidden="true">💻</span>
+            <div class="notice-card-body">
+                <h3>Join us online</h3>
+                <p>We livestream every Sunday service on our
+                <a href="https://www.youtube.com/@cathcartufchurch7834/videos"
+                   target="_blank" rel="noopener" class="section-link">YouTube channel</a>.
+                To join us on Zoom, please
+                <a href="/contact/" class="section-link">get in touch</a>
+                and we will send you the details.</p>
+            </div>
+        </div>
+
+        {# ── DIVIDER ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# ── MIDWEEK ── #}
+        <div class="section-heading" id="midweek">
+            <span class="section-heading-icon" aria-hidden="true">⏰</span>
+            <h2>Midweek — Time for Reflection</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="card-content-with-image">
+            <div class="card-image">
+                <div class="photo-placeholder content-image-medium">
+                    <img src="/assets/images/logo.png" alt="Midweek gathering at Cathcart United Free Church" />
+                </div>
+            </div>
+            <div>
+                <p>Every Wednesday at <strong>10:30am</strong> we gather in the church building for
+                a quiet 40-minute reflective time together. This is a gentler, more contemplative
+                gathering — a space to pause mid-week and reconnect with God.</p>
+
+                <p>Each session includes a Bible reading, a short talk and music. This gathering is
+                in-person only, which adds to its intimate and unhurried character. All are welcome.</p>
+            </div>
+        </div>
+
+        {# ── DIVIDER ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# ── FOOTER LINKS ── #}
+        <div class="feature-panels">
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">📍</span>
+                <h3>How to Find Us</h3>
+                <p>7 Struan Road, Glasgow G44 3AT — with directions and transport options.</p>
+                <a href="/find-us/" class="section-link">Find us &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">▶️</span>
+                <h3>Watch Online</h3>
+                <p>Catch up on recent Sunday services on our YouTube channel.</p>
+                <a href="/watch/" class="section-link">Watch services &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">✉️</span>
+                <h3>Get in Touch</h3>
+                <p>Questions about visiting or joining us online? We'd love to hear from you.</p>
+                <a href="/contact/" class="section-link">Contact us &rarr;</a>
+            </div>
+        </div>
+
+    </div>{# end .container #}
+</div>{# end .home-body #}

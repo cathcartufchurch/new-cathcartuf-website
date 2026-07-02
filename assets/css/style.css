@@ -545,8 +545,20 @@ h4 {
     margin: var(--space-lg) 0 var(--space-sm);
 }
 
+h5 {
+    font-family: var(--font-body);
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--col-espresso-dark);
+    margin: var(--space-md) 0 var(--space-xs);
+}
+
 p {
     margin-bottom: var(--space-md);
+}
+
+.p-tight {
+    margin-bottom: var(--space-xs);
 }
 
 ul,
@@ -604,14 +616,23 @@ ol li {
 }
 
 .notice-card p {
-    color: var(--col-sand);
+    color: var(--col-cream);
     font-size: 0.9em;
     margin: 0;
     line-height: 1.5;
 }
 
 .notice-card .section-link {
-    color: var(--col-terracotta);
+    display: inline-block;
+    color: var(--col-cream);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.notice-card .section-link:hover {
+    color: var(--col-sand);
 }
 
 .notice-card .stamp-watermark {
@@ -807,6 +828,12 @@ ol li {
     margin-bottom: var(--space-xl);
 }
 
+/* Two-column variant — used when a row only has 2 panels
+   (e.g. Life page: Fellowship Groups + Prayer Garden)      */
+.feature-panels--two {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .feature-panel {
     background: var(--col-white);
     border: 1px solid var(--col-border);
@@ -845,6 +872,52 @@ ol li {
     margin-top: auto;
 }
 
+/* Left-aligned variant — used when panels contain longer text
+   or transport/directions content (e.g. Find Us page)        */
+.feature-panel--left {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.feature-panel--left ul {
+    margin-left: var(--space-lg);
+    margin-bottom: var(--space-sm);
+}
+
+.feature-panel--left h3+h3,
+.feature-panel--left p+h3 {
+    margin-top: var(--space-lg);
+}
+
+.feature-panel-icon-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: var(--space-sm);
+}
+
+/* Off the CUF colour variants */
+.feature-panel--food {
+    background-color: #dad6d5;
+}
+
+.feature-panel--faith {
+    background-color: #3e6271;
+}
+
+.feature-panel--faith h3,
+.feature-panel--faith p {
+    color: var(--col-cream);
+}
+
+.feature-panel--friendship {
+    background-color: #a84f49;
+}
+
+.feature-panel--friendship h3,
+.feature-panel--friendship p {
+    color: var(--col-cream);
+}
 
 /* ===================================================
    16. SCRIPTURE CARD
@@ -1134,6 +1207,31 @@ ol li {
     background-color: var(--col-espresso-mid);
 }
 
+/* Small helper text below a form */
+.form-note {
+    font-size: 0.82em;
+    color: var(--col-text-muted);
+    margin-top: var(--space-sm);
+}
+
+/* Centred prev/next navigation at bottom of a page */
+.page-nav-links {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    font-size: 0.9em;
+    color: var(--col-border);
+}
+
+.page-nav-links a {
+    color: var(--col-terracotta);
+    font-weight: 700;
+}
+
+.page-nav-links a:hover {
+    color: var(--col-espresso-mid);
+    text-decoration: underline;
+}
+
 
 /* ===================================================
    22. VIDEO
@@ -1257,6 +1355,13 @@ ol li {
     text-decoration: none;
 }
 
+.social-link-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: inline-block
+}
 
 /* ===================================================
    26. EVENTS PAGE

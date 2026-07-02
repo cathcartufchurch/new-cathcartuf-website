@@ -1,0 +1,228 @@
+---
+title: Watch
+description: "Watch recent Sunday services from Cathcart United Free Church, Glasgow. Catch up on sermons and recordings."
+layout: base.njk
+---
+
+{# ============================================================
+   HERO
+   ============================================================ #}
+<section class="hero">
+    <img src="/assets/images/logo.png" alt="" class="hero-image" aria-hidden="true" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-tagline">
+                <p class="hero-tagline-line">Catch up on</p>
+                <p class="hero-tagline-line">our services.</p>
+            </div>
+            <p class="hero-sub">Recent Sunday recordings &middot; Last 6 months</p>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   INFO STRIP
+   ============================================================ #}
+<div class="info-strip" aria-label="Watch at a glance">
+    <div class="info-strip-inner container">
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">▶️</span>
+            <span class="info-strip-label">Latest service</span>
+            <span class="info-strip-value">Click to watch</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🗓️</span>
+            <span class="info-strip-label">Archive</span>
+            <span class="info-strip-value">Last 6 months</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">📺</span>
+            <span class="info-strip-label">All recordings</span>
+            <span class="info-strip-value">YouTube channel</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🗓️</span>
+            <span class="info-strip-label">Live Sunday</span>
+            <span class="info-strip-value">{{ site.sunday }}</span>
+        </div>
+    </div>
+</div>
+
+{# ============================================================
+   PAGE BODY
+   ============================================================ #}
+<div class="home-body">
+    <div class="container">
+
+        {% set serviceList = collections.watch | recentServices %}
+
+        {% if serviceList and serviceList.length > 0 %}
+
+            {# ── LATEST SERVICE — FEATURED ── #}
+            {% set latest = serviceList[0] %}
+            {% set latestColour = collections.seriesColours[latest.series] or "#6b7280" %}
+
+            <div class="section-heading">
+                <span class="section-heading-icon" aria-hidden="true">▶️</span>
+                <h2>Latest Service</h2>
+                <span class="section-heading-rule" aria-hidden="true"></span>
+            </div>
+
+            <div class="watch-featured">
+                <div class="watch-embed">
+                    <div class="watch-thumbnail"
+                         data-video-id="{{ latest.youtube | youtubeId }}"
+                         data-title="{{ latest.title }}"
+                         style="border-color: {{ latestColour }}">
+                        <img src="https://img.youtube.com/vi/{{ latest.youtube | youtubeId }}/maxresdefault.jpg"
+                             alt="{{ latest.title }}"
+                             onerror="this.src='https://img.youtube.com/vi/{{ latest.youtube | youtubeId }}/hqdefault.jpg'" />
+                        <div class="watch-play-button">&#9654;</div>
+                    </div>
+                </div>
+                <div class="watch-featured-info">
+                    {% if latest.series %}
+                    <span class="watch-series-badge" style="background-color: {{ latestColour }}">
+                        {{ latest.series }}
+                    </span>
+                    {% endif %}
+                    <p class="watch-featured-title">{{ latest.title }}</p>
+                    <p class="watch-meta">
+                        {{ latest.date | dateFormat }}
+                        {% if latest.preacher %} &bull; {{ latest.preacher }}{% endif %}
+                        {% if latest.scripture %} &bull; {{ latest.scripture }}{% endif %}
+                        {% if latest.duration %} &bull; {{ latest.duration }}{% endif %}
+                    </p>
+                </div>
+            </div>
+
+            {# ── STAMP DIVIDER ── #}
+            <div class="stamp-divider" aria-hidden="true">
+                <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+            </div>
+
+            {# ── PREVIOUS SERVICES ── #}
+            {% if serviceList.length > 1 %}
+            <div class="section-heading">
+                <span class="section-heading-icon" aria-hidden="true">🗓️</span>
+                <h2>Previous Services</h2>
+                <span class="section-heading-rule" aria-hidden="true"></span>
+            </div>
+
+            <div class="watch-list">
+                {% for service in serviceList %}
+                {% if not loop.first and service.youtube %}
+                {% set seriesColour = collections.seriesColours[service.series] or "#6b7280" %}
+                <div class="watch-list-item" style="border-left-color: {{ seriesColour }}">
+                    <div class="watch-embed watch-embed--small">
+                        <div class="watch-thumbnail"
+                             data-video-id="{{ service.youtube | youtubeId }}"
+                             data-title="{{ service.title }}"
+                             style="border-color: {{ seriesColour }}">
+                            <img src="https://img.youtube.com/vi/{{ service.youtube | youtubeId }}/mqdefault.jpg"
+                                 alt="{{ service.title }}" />
+                            <div class="watch-play-button">&#9654;</div>
+                        </div>
+                    </div>
+                    <div class="watch-list-info">
+                        {% if service.series %}
+                        <span class="watch-series-badge" style="background-color: {{ seriesColour }}">
+                            {{ service.series }}
+                        </span>
+                        {% endif %}
+                        <p class="watch-list-title">{{ service.title }}</p>
+                        <p class="watch-meta">
+                            {{ service.date | dateFormat }}
+                            {% if service.preacher %} &bull; {{ service.preacher }}{% endif %}
+                            {% if service.scripture %} &bull; {{ service.scripture }}{% endif %}
+                            {% if service.duration %} &bull; {{ service.duration }}{% endif %}
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+        {% else %}
+        <p class="home-empty">No recent services available. Please visit our
+        <a href="https://www.youtube.com/@cathcartufchurch7834/videos"
+           target="_blank" rel="noopener" class="section-link">YouTube channel</a>
+        for all recordings.</p>
+        {% endif %}
+
+        {# ── YOUTUBE LINK ── #}
+        <div class="notice-card" role="note">
+            <span class="notice-card-icon" aria-hidden="true">📺</span>
+            <div class="notice-card-body">
+                <h3>All Recordings</h3>
+                <p>Looking for an older service? Our full archive of recordings is
+                available on our YouTube channel.
+                <a href="https://www.youtube.com/@cathcartufchurch7834/videos"
+                   target="_blank" rel="noopener" class="section-link">Visit our YouTube channel &rarr;</a></p>
+            </div>
+        </div>
+
+        {# ── FOOTER PANELS ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        <div class="feature-panels">
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">🗓️</span>
+                <h3>Visit Us</h3>
+                <p>Join us in person on Sundays at 11am — everyone welcome.</p>
+                <a href="/visit/" class="section-link">Plan your visit &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">🎉</span>
+                <h3>What's On</h3>
+                <p>Special events, activities and gatherings coming up.</p>
+                <a href="/events/" class="section-link">See all events &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">✉️</span>
+                <h3>Get in Touch</h3>
+                <p>Questions about our services or recordings?</p>
+                <a href="/contact/" class="section-link">Contact us &rarr;</a>
+            </div>
+        </div>
+
+    </div>{# end .container #}
+</div>{# end .home-body #}
+
+<script>
+/**
+ * Watch page — YouTube thumbnail façade
+ *
+ * Think of this like a cinema lobby card — visitors see a still image
+ * of the service, and only when they click does the actual video load.
+ * This means the page loads much faster since YouTube resources are
+ * only loaded on demand rather than all at once.
+ */
+document.addEventListener("DOMContentLoaded", function () {
+
+    const thumbnails = document.querySelectorAll(".watch-thumbnail");
+
+    thumbnails.forEach(function (thumbnail) {
+        thumbnail.addEventListener("click", function () {
+
+            const videoId = thumbnail.dataset.videoId;
+            if (!videoId) return;
+
+            const iframe = document.createElement("iframe");
+            iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+            iframe.title = thumbnail.dataset.title || "Service recording";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            iframe.allowFullscreen = true;
+            iframe.loading = "lazy";
+
+            const container = thumbnail.closest(".watch-embed");
+            container.innerHTML = "";
+            container.appendChild(iframe);
+        });
+    });
+});
+</script>

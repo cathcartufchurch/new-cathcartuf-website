@@ -1,0 +1,226 @@
+---
+title: Contact Us
+description: "Get in touch with Cathcart United Free Church, Glasgow — for general enquiries or to request Sunday Zoom details."
+layout: base.njk
+---
+
+{# ============================================================
+   HERO
+   ============================================================ #}
+<section class="hero">
+    <img src="/assets/images/logo.png" alt="" class="hero-image" aria-hidden="true" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-tagline">
+                <p class="hero-tagline-line">We'd love to</p>
+                <p class="hero-tagline-line">hear from you.</p>
+            </div>
+            <p class="hero-sub">Questions, hellos, and Sunday Zoom requests welcome</p>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   INFO STRIP
+   ============================================================ #}
+<div class="info-strip" aria-label="Ways to get in touch">
+    <div class="info-strip-inner container">
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">✉️</span>
+            <span class="info-strip-label">Email</span>
+            <span class="info-strip-value"><a href="mailto:{{ site.email }}">{{ site.email }}</a></span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">📍</span>
+            <span class="info-strip-label">Address</span>
+            <span class="info-strip-value">7 Struan Road</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">⏱️</span>
+            <span class="info-strip-label">Response time</span>
+            <span class="info-strip-value">2&ndash;3 working days</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🙏</span>
+            <span class="info-strip-label">Prayer requests</span>
+            <span class="info-strip-value">Use our Connect page</span>
+        </div>
+    </div>
+</div>
+
+{# ============================================================
+   PAGE BODY
+   ============================================================ #}
+<div class="home-body">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">✉️</span>
+            <h2>Send Us a Message</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <p>Interested in finding out more about us? We would love to hear from you —
+        whether you have a question, want details of how to join us on Zoom, or just
+        want to say hello.</p>
+        <p>Please include your email address so we can reply but a phone number
+        is welcome too if you'd prefer we call.</p>
+
+        <form class="contact-form" id="contactForm">
+
+            <p class="form-note">Fields marked <span class="required">*</span> are required.</p>
+            
+            <div class="form-group">
+                <label for="contactName">Name <span class="required">*</span></label>
+                <input type="text" id="contactName" name="name" required
+                    placeholder="Your name" />
+            </div>
+
+            <div class="form-group">
+                <label for="contactEmail">Email <span class="required">*</span></label>
+                <input type="email" id="contactEmail" name="email" required
+                    placeholder="Your email address" />
+            </div>
+
+            <div class="form-group">
+                <label for="contactPhone">Phone</label>
+                <input type="tel" id="contactPhone" name="phone"
+                    placeholder="Your phone number" />
+            </div>
+
+            <div class="form-group">
+                <label for="contactMessage">Message <span class="required">*</span></label>
+                <textarea id="contactMessage" name="message" required
+                    placeholder="Your message or question..." rows="6"></textarea>
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" id="contactZoom" name="zoom" />
+                <label for="contactZoom">Please send me details of how to join our
+                    Sunday service on Zoom</label>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+            <div id="contactStatus"></div>
+
+        </form>
+
+        <p class="form-note">We aim to respond within 2&ndash;3 working days.</p>
+
+        {# ── STAMP DIVIDER ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# ── OTHER WAYS TO GET IN TOUCH ── #}
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">📬</span>
+            <h2>Other Ways to Get in Touch</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="card-content-with-image">
+            <div>
+                <h4>Email</h4>
+                <p class="p-tight"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+
+                <h4>Find Us</h4>
+                <p class="p-tight">{{ site.name }}<br />{{ site.address }}</p>
+                <a href="/find-us/" class="section-link">How to find us &rarr;</a>
+
+                <h4>Prayer Requests</h4>
+                <p>If you would like us to pray for you, please use our dedicated
+                <a href="/connect/#prayer-request" class="section-link">prayer request form</a>.</p>
+            </div>
+        </div>
+
+        <h4>Follow Us</h4>
+        <div class="social-links">
+            <a href="{{ site.facebook }}" target="_blank" rel="noopener" class="social-link">
+                <img src="/assets/images/Facebook_Logo_Primary.png" alt="" class="social-link-icon" />
+                Facebook
+            </a>
+            <a href="https://www.youtube.com/@cathcartufchurch7834/videos" target="_blank" rel="noopener" class="social-link">
+                <img src="/assets/images/yt_icon_red_digital.png" alt="" class="social-link-icon" />
+                YouTube
+            </a>
+        </div>
+
+        {# ── FOOTER PANELS ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        <div class="feature-panels">
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">🗓️</span>
+                <h3>Visit Us</h3>
+                <p>Join us on Sundays at 11am or Wednesdays at 10:30am.</p>
+                <a href="/visit/" class="section-link">Plan your visit &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">🙏</span>
+                <h3>Prayer</h3>
+                <p>Send a prayer request or join our Monday prayer meeting.</p>
+                <a href="/connect/" class="section-link">Connect with us &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">📍</span>
+                <h3>Find Us</h3>
+                <p>Maps, directions and accessibility information.</p>
+                <a href="/find-us/" class="section-link">How to find us &rarr;</a>
+            </div>
+        </div>
+
+    </div>{# end .container #}
+</div>{# end .home-body #}
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const statusDiv = document.getElementById('contactStatus');
+        statusDiv.textContent = 'Sending...';
+        statusDiv.style.color = 'black';
+
+        const formData = {
+            name: document.getElementById('contactName').value,
+            email: document.getElementById('contactEmail').value,
+            subject: document.getElementById('contactMessage').value.substring(0, 50) + '...',
+            message: document.getElementById('contactMessage').value,
+            phone: document.getElementById('contactPhone').value || null,
+            wantZoom: document.getElementById('contactZoom').checked
+        };
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            let data;
+            try {
+                data = await response.json();
+            } catch (e) {
+                statusDiv.textContent = 'Server error: ' + response.status;
+                statusDiv.style.color = 'red';
+                return;
+            }
+
+            if (response.ok) {
+                statusDiv.textContent = data.message;
+                statusDiv.style.color = 'green';
+                document.getElementById('contactForm').reset();
+            } else {
+                statusDiv.textContent = data.error || 'Failed to send message. Please try again.';
+                statusDiv.style.color = 'red';
+            }
+        } catch (error) {
+            statusDiv.textContent = 'Error: ' + error.message;
+            statusDiv.style.color = 'red';
+            console.error('Error:', error);
+        }
+    });
+</script>

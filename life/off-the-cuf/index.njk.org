@@ -1,0 +1,192 @@
+---
+title: Off the CUF
+description: "Off the CUF — a relaxed monthly morning gathering at Cathcart United Free Church. Food, friendship and faith. First Saturday of every month, 10:30am–12pm."
+layout: base.njk
+---
+
+{# ============================================================
+   HERO
+   ============================================================ #}
+<section class="hero">
+    <img src="/assets/images/off-the-cuf-hero.jpg" alt="" class="hero-image" aria-hidden="true" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-tagline">
+                <p class="hero-tagline-line">Come as you are.</p>
+            </div>
+            <p class="hero-sub">First Saturday of every month &middot; 10:30am&ndash;12pm</p>
+        </div>
+    </div>
+</section>
+
+{# ============================================================
+   INFO STRIP
+   ============================================================ #}
+<div class="info-strip" aria-label="Off the CUF at a glance">
+    <div class="info-strip-inner container">
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">🗓️</span>
+            <span class="info-strip-label">When</span>
+            <span class="info-strip-value">1st Saturday, 10:30&ndash;12pm</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">📍</span>
+            <span class="info-strip-label">Where</span>
+            <span class="info-strip-value">7 Struan Road</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">💷</span>
+            <span class="info-strip-label">Cost</span>
+            <span class="info-strip-value">Free</span>
+        </div>
+        <div class="info-strip-item">
+            <span class="info-strip-icon" aria-hidden="true">👋</span>
+            <span class="info-strip-label">Who's it for</span>
+            <span class="info-strip-value">Everyone welcome</span>
+        </div>
+    </div>
+</div>
+
+{# ============================================================
+   PAGE BODY
+   ============================================================ #}
+<div class="home-body">
+    <div class="container">
+
+        {# ── SCRIPTURE CARD ── #}
+        <div class="scripture-card">
+            <blockquote>
+                <p>"Therefore welcome one another as Christ has welcomed you, for the
+                glory of God."</p>
+            </blockquote>
+            <cite class="scripture-ref">Romans 15:7</cite>
+        </div>
+
+        {# ── WHAT IS OFF THE CUF ── #}
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">🎉</span>
+            <h2>What is Off the CUF?</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="card-content-with-image">
+            <div>
+                <p>Off the CUF is a relaxed and friendly morning gathering that takes
+                place on the first Saturday of every month. It is open to absolutely
+                everyone &mdash; whether you are part of our congregation, curious
+                about church, or simply looking for some company and a good brunch.</p>
+
+                <p>We gather in an informal café-style setting to explore a theme that
+                speaks to our shared human experience. We introduce different
+                perspectives, including Christian viewpoints, creating space for open
+                conversation where we can listen, share, and learn from each other.</p>
+
+                <p>Topics explored in the past include: Joy, Global aid, Peace, Olympic
+                inspirations, God's love.</p>
+
+                <p>There is no programme to follow and no pressure. Come along, grab a
+                drink, have some food, and see where the morning takes you.</p>
+            </div>
+            <div class="card-image">
+                <div class="photo-placeholder content-image-medium">
+                    <img src="/assets/images/OffTheCUFPoster.jpg" alt="Off the CUF poster" />
+                </div>
+            </div>
+        </div>
+
+        {# ── STAMP DIVIDER ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# ── FOOD, FRIENDSHIP, FAITH ── #}
+        <div class="feature-panels">
+            <div class="feature-panel feature-panel--food">
+                <img src="/assets/images/food.png" alt="" class="feature-panel-icon-img" />
+                <h3>Food</h3>
+                <p>Refuel with hot drinks and a simple brunch. Come hungry!</p>
+            </div>
+            <div class="feature-panel feature-panel--friendship">
+                <img src="/assets/images/friendship.png" alt="" class="feature-panel-icon-img" />
+                <h3>Friendship</h3>
+                <p>Play a game, bring a hobby, meet new people. There is always
+                something going on and a warm welcome waiting.</p>
+            </div>
+            <div class="feature-panel feature-panel--faith">
+                <img src="/assets/images/faith.png" alt="" class="feature-panel-icon-img" />
+                <h3>Faith</h3>
+                <p>Discuss current topics with personal reflections and a chance to
+                ask questions &mdash; no question is too big or too small.</p>
+            </div>
+        </div>
+
+        {# ── STAMP DIVIDER ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# ── VIDEO ── #}
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">🎬</span>
+            <h2>See it for Yourself</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="video-container">
+            <video controls style="width: 100%; border-radius: var(--radius-md);">
+                <source src="/assets/video/Three.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        {# ── STAMP DIVIDER ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        {# ── SPREAD THE WORD ── #}
+        <div class="section-heading">
+            <span class="section-heading-icon" aria-hidden="true">📣</span>
+            <h2>Spread the Word</h2>
+            <span class="section-heading-rule" aria-hidden="true"></span>
+        </div>
+
+        <p>Off the CUF is designed to be a place where everyone feels comfortable to
+        bring a friend or neighbour, regardless of their background or beliefs. If you
+        know someone who might enjoy a relaxed Saturday morning out, please do invite
+        them along.</p>
+        <p class="p-tight">Keep an eye on our events page and Facebook page for the
+        next date.</p>
+        <a href="/events/" class="section-link">See upcoming events &rarr;</a>
+        &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+        <a href="{{ site.facebook }}" target="_blank" rel="noopener" class="section-link">Follow us on Facebook &rarr;</a>
+
+        {# ── FOOTER PANELS ── #}
+        <div class="stamp-divider" aria-hidden="true">
+            <span class="stamp-divider-text">&mdash;&nbsp;&nbsp;GROW ✝ SERVE ✝ SHARE&nbsp;&nbsp;&mdash;</span>
+        </div>
+
+        <div class="feature-panels">
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">📍</span>
+                <h3>Find Us</h3>
+                <p>Maps, directions and accessibility information.</p>
+                <a href="/find-us/" class="section-link">How to find us &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">⛪</span>
+                <h3>Church Life</h3>
+                <p>Discover more about our wider community and groups.</p>
+                <a href="/life/" class="section-link">Church life &rarr;</a>
+            </div>
+            <div class="feature-panel">
+                <span class="feature-panel-icon" aria-hidden="true">✉️</span>
+                <h3>Get in Touch</h3>
+                <p>Any questions about Off the CUF? We'd love to hear from you.</p>
+                <a href="/contact/" class="section-link">Contact us &rarr;</a>
+            </div>
+        </div>
+
+    </div>{# end .container #}
+</div>{# end .home-body #}
